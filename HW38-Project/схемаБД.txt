@@ -1,0 +1,153 @@
+# Физические лица
+Card as C
+--
+auto_card int PK 
+name varchar(40)
+name_i varchar(40)
+name_o varchar(40)
+Full_Name varchar(128)
+date_birth datetime
+sex tinyint 
+SocNumber varchar(15) UNIQUE
+INN varchar(12)
+EMail varchar(64)
+Passp_ser varchar(10)
+Passp_num varchar(16)
+Passp_date datetime
+Adress1 string
+Adress2 NULL string
+mdate datetme
+uname varchar(128)
+
+# работники
+# одному физ. лицу может соотв. несколько работников 1 : N
+# одно физ. лицо может быть принято в разные фирмы
+People as P
+--
+pid int PK
+auto_card int FK >- C.auto_card
+id_firm int FK >- Setup.id_firm
+num_tab varchar(8) 
+in_date datetime
+out_date dateime
+ref_num int FK >- PR_Orders.Ref_num
+m_date datetime
+uname varchar(128)
+
+# фирмы
+Setup as S
+--
+id_firm int PK
+Name varchar(255)
+INN varchar(12)
+Phone varchar(32)
+EMail NULL varchar(64)
+Adress1 string
+Adress2 NULL string
+Director_pid int FK >- People.pid
+
+# назначения сотрудников
+# у одного работника может быть несколько назначений
+pr_current as PR
+--
+prid int PK
+pid int FK >- People.pid
+id_firm int FK >- Setup.id_firm
+Cell_id int FK >- Cells.Cell_id
+Number_w int
+ref_num int FK >- PR_Orders.Ref_num
+date_start datetime
+date_end datetime
+coeff_1 numeric(19,4)
+coeff_2 numeric(19,4)
+mdate datetime
+uname varchar(128)
+
+# Структура подразделений
+Structs 
+--
+struct_code int PK
+id_firm int FK >- Setup.id_firm
+struct_name varchar(255) 
+struct_parent smallint
+struct_level int
+struct_root int
+curator_pid int FK >- People.pid
+date_in datetime
+date_out datetime
+
+# профессии
+Appoints
+--
+app_code int PK
+Name_app varchar(255)
+
+# ячейки штатного расписания
+Cells
+--
+Cell_id int PK
+Struct_code int FK >- Structs.struct_code
+app_code int FK >- Appoints.app_code
+Wage numeric(19,4)
+Date_in datetime
+date_out datetime
+id_firm int FK >- Setup.id_firm
+number_count numeric(19,4)
+number_used numeric(19,4)
+mdate datetime
+uname varchar(128)
+
+# Лицевые счета
+# У одного сотрудника 1 ЛС по одной фирме
+Lic as L
+--
+id_lic int PK
+pid int FK >- People.pid
+prid int FK >- pr_current.prid
+tmonth tinyint 
+tyear smallint
+cmonth smallint 
+code_pay smallint FK >- Typ_Pay.code_pay
+summa numeric(19,4)
+percent numeric(19,8)
+days numeric(9,4)
+hours numeric(19,4)
+id_firm int FK >- Setup.id_firm
+Struct_code int FK >- Structs.struct_code
+mdate datetime
+uname varchar(128)
+
+# Приказы
+PR_Orders
+--
+Ref_num int PK
+Ref_Name varchar(100)
+id_Firm int FK
+Status int
+Categ int
+date_start datetime
+date_end datetime
+mdate datetime
+uname varchar(128)
+
+# Отсутствия
+Pr_Leave
+--
+id_leave int PK
+pid int FK >- People.pid
+Type_leave int FK
+code_pay smallint FK
+Ref_num int FK >- PR_Orders.Ref_num
+date_start datetime
+date_end datetime
+flag_plan tinyint
+cmonth smallint
+mdate datetime
+uname varchar(128)
+
+
+# Виды оплат
+Typ_Pay
+--
+Code_pay int PK
+Name_pay varchar(100)

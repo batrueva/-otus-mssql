@@ -1,0 +1,10 @@
+C:\Users\Администратор\source\repos\DemoProject\DemoProject\bin\Debug\DemoProject.dll
+C:\Users\Администратор\source\repos\DemoProject\DemoProject\bin\Debug\DemoProject.pdb
+C:\Users\Администратор\source\repos\DemoProject\DemoProject\bin\Debug\Microsoft.Analytics.Interfaces.dll
+C:\Users\Администратор\source\repos\DemoProject\DemoProject\bin\Debug\Microsoft.Analytics.Interfaces.Streaming.dll
+C:\Users\Администратор\source\repos\DemoProject\DemoProject\bin\Debug\Microsoft.Analytics.Types.dll
+C:\Users\Администратор\source\repos\DemoProject\DemoProject\obj\Debug\DemoProject.csproj.AssemblyReference.cache
+C:\Users\Администратор\source\repos\DemoProject\DemoProject\obj\Debug\DemoProject.csproj.CoreCompileInputs.cache
+C:\Users\Администратор\source\repos\DemoProject\DemoProject\obj\Debug\DemoProject.csproj.CopyComplete
+C:\Users\Администратор\source\repos\DemoProject\DemoProject\obj\Debug\DemoProject.dll
+C:\Users\Администратор\source\repos\DemoProject\DemoProject\obj\Debug\DemoProject.pdb
